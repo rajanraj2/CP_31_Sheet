@@ -12,10 +12,11 @@ int main() {
 
         bool flag = true;
         set<char> st;
+        int xlen = x.size();
         int len = s.size();
-        for (char &c : s) st.insert(c);
+        for (char &c : x) st.insert(c);
 
-        for (char &c : x) {
+        for (char &c : s) {
             if (st.count(c) == 0) {
                 flag = false;
                 break;
@@ -28,7 +29,7 @@ int main() {
         }
 
         int count = 0;
-        while (x.size() <= (2 * len)) {
+        while (x.size() <= xlen + (2 * len)) {
             if (x.find(s) != string::npos) {
                 flag = false;
                 break;
@@ -37,8 +38,7 @@ int main() {
             count++;
         }
         
-        if (!flag) cout << count << endl; 
-        else if (x.find(s) != string::npos) cout << count << endl;
+        if (x.find(s) != string::npos) cout << count << endl;
         else cout << -1 << endl;
     }    
     return 0;
